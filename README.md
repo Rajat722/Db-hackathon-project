@@ -21,6 +21,8 @@
     2. [How do I deploy Cloud Run?](#how-do-i-deploy-cloud-run)
     3. [How do I deploy App Engine?](#how-do-i-deploy-app-engine)
     4. [How do I deploy Cloud Functions?](#how-do-i-deploy-cloud-functions)
+    5. [How do I get Support](#teams-support-channels)
+    6. [How to I Login to Teams](#teams-support-channels)
 
 ## About your hackathon environment
 Your hackathon environment consists of four components:
@@ -451,9 +453,23 @@ A spreadsheet of useful additional information is available [here](https://stora
 
 ## Additional useful guides 
 
-1. TODO Update - [How to access the Teams Chat](https://storage.cloud.google.com/hackathon_shared_storage/teams_guide.docx)
-2. [Hackathon Briefing Pack](https://storage.cloud.google.com/hackathon_shared_storage/TeamLeadBriefingDeck.pdf)
-3. [Top tips designing for cognitive accessibility](https://storage.cloud.google.com/hackathon_shared_storage/Top_tips_cognitive_accessibility.pdf) and [video](https://youtu.be/yHTTG5Yh4bc?si=hIrjmR96uc1fPihH)
+1. [Hackathon Briefing Pack](https://storage.cloud.google.com/hackathon_shared_storage/TeamLeadBriefingDeck.pdf)
+2. [Top tips designing for cognitive accessibility](https://storage.cloud.google.com/hackathon_shared_storage/Top_tips_cognitive_accessibility.pdf) and [video](https://youtu.be/yHTTG5Yh4bc?si=hIrjmR96uc1fPihH)
+
+## Teams Support Channels
+
+Each participant should have been automatically enabled for the Hackathon Teams platform. You can use your client of choice (i.e. browser, Windows, Android, or IOS endpoint) and to login use your Hackathon login <your_user_id>@db-hackathon.com.
+You can use all the Teams functionalities including chat, group chat, voice/video and meetings.
+To support you during the event the Team "DB Global Hackathon Support" was created and within this team there are various channels:
+1. General: Use this for any general question about the event.
+2. GitHub Support: Use this channel for any question related to GitHub.
+3. Google Support: Use this channel for any question or issue with the Google platform.
+4. Microsoft Support: Use this channel for any question or issue with the Microsoft platform.
+5. HashiCorp Support: Use this channel for any question or issue with the HashiCorp platform.
+6. RedHat Support: Use this channel for any question or issue with the RedHat (OpenShift) platform.
+
+The Team "DB Global Hackathon Support" is public, you can discover this team by using the Browse Teams  
+
 
 ## FAQ
 ### Authenticating with GCP APIs from code
