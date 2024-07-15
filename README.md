@@ -1,6 +1,5 @@
 # Welcome, eletech, to the 2024 TDI Global Hackathon
 ## Contents
-1. [Bye bye]()
 1. [About your hackathon environment](#about-your-hackathon-environment)
 2. [Access Issues](#access-issues)
 3. [GCP](#gcp)
@@ -13,7 +12,8 @@
     1. [Limitations & Restrictions](#limitations--restrictions-1) 
 5. [Terraform Cloud](#terraform-cloud)
 6. [OpenShift](#openshift) 
-7. [Use Cases](#use-cases)
+7. [Azure](#azure)
+8. [Use Cases](#use-cases)
 8. [DataSets](#datasets)
 9. [Additional useful guides](#additional-useful-guides-)
 10. [FAQ](#faq)
@@ -35,7 +35,7 @@ You have considerable interactive access to your GCP project.
 Using the GitHub repository and the Terraform Cloud workspace are entirely optional.
 
 > **Note**
-> This README content may be changed or overwritten by the hackathon organisors during the event. If you intend to create documentation please house it in a separate file.
+> This README content may be changed or overwritten by the hackathon organisers during the event. If you intend to create documentation please house it in a separate file.
 
 ## Access Issues
 If you have any issues accessing any aspect of the hackathon environment, please raise an issue [here](https://github.com/db-hackathon/support/issues/new/choose), 
@@ -415,6 +415,12 @@ Use this to authenticate with GCP APIs from your workloads.
 Each token expires after one hour, but the value of the secret is automatically refreshed.
 Your application should tolerate having to refresh the token from the Kubernetes secret.
 When it detects an expired token, simply access the Kubernetes secret again to get a fresh one.
+
+
+## Azure
+Log in using your SSO ID. Each team has a Resource Group in which they have broad administrative access.
+Training materials are available [here](https://dbaihackathon2024outlook.sharepoint.com/sites/HakathonTraining/SitePages/TrainingHome.aspx).
+
 
 ## Use Cases
 
