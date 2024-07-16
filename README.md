@@ -13,10 +13,11 @@
 5. [Terraform Cloud](#terraform-cloud)
 6. [OpenShift](#openshift) 
 7. [Azure](#azure)
-8. [Use Cases](#use-cases)
-8. [DataSets](#datasets)
-9. [Additional useful guides](#additional-useful-guides-)
-10. [FAQ](#faq)
+8. [Hackathon Use Cases](#hackathon-use-cases)
+8. [Hackathon DataSets](#hackathon-datasets)
+9. [Code and Setup Tutorials](#code-and-setup-tutorials)
+10. [Additional useful guides](#additional-useful-guides-)
+11. [FAQ](#faq)
     1. [Authenticating with GCP APIs from code](#authenticating-with-gcp-apis-from-code)
     2. [How do I deploy Cloud Run?](#how-do-i-deploy-cloud-run)
     3. [How do I deploy App Engine?](#how-do-i-deploy-app-engine)
@@ -402,6 +403,7 @@ A set of useful [Input variables](https://developer.hashicorp.com/terraform/lang
 * workload_sa_id - The fully qualified ID representation of the SA you can attach to your workloads (e.g. to a Cloud Run service). : projects/hack-team-eletech/serviceAccounts/workload@hack-team-eletech.iam.gserviceaccount.com
 
 ## OpenShift
+
 ### Interactive Access
 Log in to OpenShift via https://console-openshift-console.apps.dbh.dbhackathon.org/.
 No SSL cert has been provisioned, so you'll have to risk the warnings.
@@ -422,7 +424,7 @@ Log in using your SSO ID. Each team has a Resource Group in which they have broa
 Training materials are available [here](https://dbaihackathon2024outlook.sharepoint.com/sites/HakathonTraining/SitePages/TrainingHome.aspx).
 
 
-## Use Cases
+## Hackathon Use Cases
 
 These are detailed in the [briefing pack](https://storage.cloud.google.com/hackathon_shared_storage/TeamLeadBriefingDeck.pdf), but to summarise here:
 
@@ -437,25 +439,34 @@ Dementia UK?
 * How can we make Dementia UK content easily accessible?
 
 
-### Datasets
+## Hackathon Datasets
 Dementia UK data is provided for you to use to ground your application with relevant guidance.
 
 Dementia UK's website provides informational web pages and related PDF leaflets. The PDF leaflets are available [here](https://storage.cloud.google.com/hackathon_shared_storage/dementia_uk_data/pdfs).
 
 A spreadsheet of useful additional information is available [here](https://storage.cloud.google.com/hackathon_shared_storage/dementia_uk_data/useful_data.xlsx).  This contains the mapping of PDFs to URLs, google search volumes relating to dementia and information for specific use cases.), 
 
-## Code Tutorials
-
+## Code and Setup Tutorials
 ### Google
 
 * [Google Cloud Generative AI Training Resources](https://cloud.google.com/blog/topics/training-certifications/new-google-cloud-generative-ai-training-resources)
 
 ### Microsoft/OpenAI
 
+* [Microsoft Azure and OpenAI Hackathon Sharepoint Training Site](https://dbaihackathon2024outlook.sharepoint.com/sites/HakathonTraining)
+* [Available Services in Azure](https://storage.cloud.google.com/hackathon_shared_storage/Hack%20Dementia%20Azure%20Environment%20Information.pptx)
 * [Get Started with Microsoft Azure Power Apps, Power Automate and AI Builder](https://learn.microsoft.com/en-us/collections/g6r3irnpjjz8mj)
 * [Microsoft Co-Pilot Studio](https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio)
 * [Microsoft AI Builder](https://learn.microsoft.com/en-us/ai-builder/overview)
 * [Get started using GPT-35-Turbo and GPT-4 with Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-studio)
+
+### GitHub
+
+* [GitHub Copilot documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot)
+* [How to install and the features of GitHub Copilot that are more relevant to the end users](https://docs.github.com/en/enterprise-cloud@latest/copilot/setting-up-github-copilot/setting-up-github-copilot-for-yourself) (ignoring the first step as you will be providing them from the enterprise/organization): 
+* [Installing the extensions into your supported IDEs](https://docs.github.com/en/enterprise-cloud@latest/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment) note there are a number of tabs on this page that you can select for the dedicated supported IDE which are Azure Data Studio, JeBrains IDEs, Vim/Neovim, Visual Studio and Visual Studio Code
+* [Links to what features GitHub Copilot gives you and how to use it](https://docs.github.com/en/enterprise-cloud@latest/copilot/using-github-copilot)
+* [Video on getting started with GitHub Copilot](https://www.youtube.com/watch?v=dhfTaSGYQ4o)
 
 ## Additional useful guides 
 
