@@ -405,7 +405,8 @@ A set of useful [Input variables](https://developer.hashicorp.com/terraform/lang
 ## OpenShift
 
 ### Interactive Access
-Log in to OpenShift via https://console-openshift-console.apps.dbh.dbhackathon.org/.
+
+Two OpenShift environments are available for the hackathon event. The primary cluster is [here](https://console-openshift-console.apps.dbh.db-hackathon.org).
 No SSL cert has been provisioned, so you'll have to risk the warnings.
 On that page, choose to "Log in with" the "githubidp" option and use the GitHub handle you signed up with to complete the authentication.
 
@@ -418,6 +419,7 @@ Each token expires after one hour, but the value of the secret is automatically 
 Your application should tolerate having to refresh the token from the Kubernetes secret.
 When it detects an expired token, simply access the Kubernetes secret again to get a fresh one.
 
+A secondary cluster is available [here](https://console-openshift-console.apps.hackathon.uksouth.aroapp.io) and if it is required to use this one too you will be directed to it.
 
 ## Azure
 Log in using your SSO ID. Each team has a Resource Group in which they have broad administrative access.
