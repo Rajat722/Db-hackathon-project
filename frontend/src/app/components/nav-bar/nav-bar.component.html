@@ -1,0 +1,58 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>Alerts</button>
+    <ng-template ngbNavContent>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Relation</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (country of countries; track country.name; let i = $index) {
+          <tr>
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              <img
+                [src]="
+                  'https://upload.wikimedia.org/wikipedia/commons/' +
+                  country.flag
+                "
+                [alt]="'The flag of ' + country.name"
+                class="me-2"
+                style="width: 20px"
+              />
+              {{ country.name }}
+            </td>
+            <td>{{ country.area }}</td>
+            <td>{{ country.population }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <button ngbNavLink>Timeline</button>
+    <ng-template ngbNavContent> </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <button ngbNavLink>Location</button>
+    <ng-template ngbNavContent>
+      <p>
+        Raw denim you probably haven't heard of them jean shorts Austin.
+        Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
+        cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
+        butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui
+        irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
+        Seitan aliquip quis cardigan american apparel, butcher voluptate nisi
+        qui.
+      </p>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
