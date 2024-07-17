@@ -1,5 +1,7 @@
 # Welcome, eletech, to the 2024 TDI Global Hackathon
+
 ## Contents
+
 1. [About your hackathon environment](#about-your-hackathon-environment)
 2. [Access Issues](#access-issues)
 3. [GCP](#gcp)
@@ -10,9 +12,9 @@
     5. [Developing in Google Cloud Console & Cloud Shell](#developing-in-google-cloud-console--cloud-shell)
     6. [GCP Example Apps](#gcp-example-apps)
 4. [GitHub](#github)
-    1. [Limitations & Restrictions](#limitations--restrictions-1) 
+    1. [Limitations & Restrictions](#limitations--restrictions-1)
 5. [Terraform Cloud](#terraform-cloud)
-6. [OpenShift](#openshift) 
+6. [OpenShift](#openshift)
 7. [Azure](#azure)
 8. [Hackathon Use Cases](#hackathon-use-cases)
 8. [Hackathon DataSets](#hackathon-datasets)
@@ -27,39 +29,34 @@
     6. [How to I Login to Teams](#teams-support-channels)
 
 ## About your hackathon environment
+
 Your hackathon environment consists of four components:
+
 1. A GCP project (https://console.cloud.google.com/home/dashboard?project=hack-team-eletech)
 2. This GitHub repository (https://github.com/db-hackathon/eletech)
 3. A Terraform Cloud workspace (https://app.terraform.io/app/db-hackathon-2024/workspaces/hack-team-eletech)
 4. A namespace in a shared RedHat Openshift 4.13 cluster (https://console-openshift-console.apps.dbh.dbhackathon.org/)
+5. A MS Teams [instance](https://teams.microsoft.com/v2/) with
+   a [global support Team](https://teams.microsoft.com/l/team/19%3AanjLDL718QMHaZCH0sDgW6dz-Cl8Kcgb8EJvNVVqvo41%40thread.tacv2/conversations?groupId=7c337606-8e36-414f-946e-09ac1161aca5&tenantId=a8f249fb-91ee-4dd5-bf60-d1ec1330b078)
+   and a dedicated Team for each participant.
 
 You have considerable interactive access to your GCP project.
 Using the GitHub repository and the Terraform Cloud workspace are entirely optional.
 
 > **Note**
-> This README content may be changed or overwritten by the hackathon organisers during the event. If you intend to create documentation please house it in a separate file.
+> This README content may be changed or overwritten by the hackathon organisers during the event. If you intend to
+> create documentation please house it in a separate file.
 
 ## Access Issues
-If you have any issues accessing any aspect of the hackathon environment, please raise an issue [here](https://github.com/db-hackathon/support/issues/new/choose), 
+
+If you have any issues accessing any aspect of the hackathon environment, please raise an
+issue [here](https://github.com/db-hackathon/support/issues/new/choose),
 or ask a colleague to do so.
 
 ## [GCP](https://console.cloud.google.com/home/dashboard?project=hack-team-eletech)
-### First log-in
-To log in to the GCP Cloud Console:
-1. Navigate to https://console.cloud.google.com.
-2. Sign out if you're already signed in.
-3. On the first form (headed, "Sign in to continue to Google Cloud Platform") enter your hackathon user ID then click "Next".
-   1. To derive your hackathon user ID, take the personal email address you signed up with, substitute the "@" with "." and append "@db-hackathon.com".
-   2. For example, foo@bar.com becomes foo.bar.com@db-hackathon.com.
-4. On the next form (headed, "Hi <name>"), click "Forgot password?".
-5. Follow the password recovery process. It will send a link to your personal email address.
-6. Follow that link and set a new password.
-7. Set up 2FA immediately.
-8. Navigate to https://console.cloud.google.com/home/dashboard?project=hack-team-eletech.
-
-> Walkthough Video Tutorial including 2FA Setup - **[Video Here](https://youtu.be/fs8jDCwwqFI)**
 
 ### Access Rights & Principals
+
 The below APIs have been activated on your project. You cannot activate APIs yourselves.
 * aiplatform.googleapis.com
 * appengine.googleapis.com
@@ -172,7 +169,8 @@ Every team member has the following roles granted at project level:
 * roles/workstations.networkAdmin
 
 You have an "infrastructure SA" (infrastructure@hack-team-eletech.iam.gserviceaccount.com) with the same IAM permissions as team members.
-You can authenticate as it from a GitHub Actions workflow anywhere in this repo using the Workload Identity Federation method of [Google's auth action](https://github.com/google-github-actions/auth)
+You can authenticate as it from a GitHub Actions workflow anywhere in this repo using the Workload Identity Federation
+method of [Google's auth action](https://github.com/google-github-actions/auth)
 and run gcloud commands using [Google's setup-gcloud Action](https://github.com/google-github-actions/setup-gcloud).
 There's an [example workflow in your repo](./.github/workflows/example_using_gcloud.yml) to start you off.
 This SA is also used when you provision infrastructure using your Terraform Cloud workspace.
@@ -234,58 +232,65 @@ The workload SA has the following roles granted at project level:
 * roles/workflows.invoker
 
 ## Use a custom/user-managed Service Account wherever possible
+
 The default compute service account in your project has been de-privileged.
-Whenever you provision compute (e.g. a VMs powering a Jupyter notebook or dataflow pipeline, a Cloud Run service or a Cloud Function)
-you must attach your Workload SA (workload@hack-team-eletech.iam.gserviceaccount.com) , usually referred to in the GCP documentation as "attaching a custom SA".
-Both your GitHub Actions workflows and Terraform Cloud workspaces have pre-populated variables containing the Workload SA email.
+Whenever you provision compute (e.g. a VMs powering a Jupyter notebook or dataflow pipeline, a Cloud Run service or a
+Cloud Function)
+you must attach your Workload SA (workload@hack-team-eletech.iam.gserviceaccount.com) , usually referred to in the GCP documentation as "attaching a custom
+SA".
+Both your GitHub Actions workflows and Terraform Cloud workspaces have pre-populated variables containing the Workload
+SA email.
 See the respective sections below for details.
 
 Examples:
+
 * App Engine
-  * [gcloud](https://cloud.google.com/appengine/docs/legacy/standard/python/user-managed-service-accounts#gcloud) 
-  * [Terraform - Flex](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/app_engine_flexible_app_version#service_account)
-  * [Terraform - Standard](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/app_engine_standard_app_version#service_account)
+    * [gcloud](https://cloud.google.com/appengine/docs/legacy/standard/python/user-managed-service-accounts#gcloud)
+    * [Terraform - Flex](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/app_engine_flexible_app_version#service_account)
+    * [Terraform - Standard](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/app_engine_standard_app_version#service_account)
 * [Cloud Build](https://cloud.google.com/build/docs/securing-builds/configure-user-specified-service-accounts)
-  * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudbuild_trigger#service_account_email)
+    * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudbuild_trigger#service_account_email)
 * Cloud Composer
-  * [Console](https://cloud.google.com/composer/docs/how-to/managing/creating#console)
-  * [gcloud](https://cloud.google.com/composer/docs/how-to/managing/creating#gcloud)
-  * [Terraform](https://cloud.google.com/composer/docs/how-to/managing/creating#terraform)
+    * [Console](https://cloud.google.com/composer/docs/how-to/managing/creating#console)
+    * [gcloud](https://cloud.google.com/composer/docs/how-to/managing/creating#gcloud)
+    * [Terraform](https://cloud.google.com/composer/docs/how-to/managing/creating#terraform)
 * Cloud Functions
-  * [Console](https://cloud.google.com/functions/docs/securing/function-identity#console)
-  * [gcloud](https://cloud.google.com/functions/docs/securing/function-identity#gcloud)
-  * [Terraform - Gen1](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions_function#service_account_email)
-  * [Terraform - Gen2](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions2_function#service_account_email)
+    * [Console](https://cloud.google.com/functions/docs/securing/function-identity#console)
+    * [gcloud](https://cloud.google.com/functions/docs/securing/function-identity#gcloud)
+    * [Terraform - Gen1](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions_function#service_account_email)
+    * [Terraform - Gen2](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions2_function#service_account_email)
 * Cloud Run
-  * [Console](https://cloud.google.com/run/docs/securing/service-identity#console)
-  * [gcloud](https://cloud.google.com/run/docs/securing/service-identity#gcloud)
-  * [Terraform](https://cloud.google.com/run/docs/securing/service-identity#terraform)
+    * [Console](https://cloud.google.com/run/docs/securing/service-identity#console)
+    * [gcloud](https://cloud.google.com/run/docs/securing/service-identity#gcloud)
+    * [Terraform](https://cloud.google.com/run/docs/securing/service-identity#terraform)
 * [Dataflow](https://cloud.google.com/dataflow/docs/concepts/security-and-permissions#specify_a_user-managed_worker_service_account)
-  * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataflow_job#service_account_email)
-  * [Terraform - Flex](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataflow_flex_template_job#parameters)
+    * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataflow_job#service_account_email)
+    * [Terraform - Flex](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataflow_flex_template_job#parameters)
 * Cloud Scheduler
-  * [Schedules](https://cloud.google.com/run/docs/triggering/using-scheduler#create_job)
-  * [Tasks](https://cloud.google.com/run/docs/triggering/using-tasks#creating_http_tasks_with_authentication_tokens)
-  * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_scheduler_job#service_account_email)
+    * [Schedules](https://cloud.google.com/run/docs/triggering/using-scheduler#create_job)
+    * [Tasks](https://cloud.google.com/run/docs/triggering/using-tasks#creating_http_tasks_with_authentication_tokens)
+    * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_scheduler_job#service_account_email)
 * Dataproc
-  * [Console](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#console)
-  * [gcloud](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#gcloud-command)
-  * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataproc_cluster#service_account)
+    * [Console](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#console)
+    * [gcloud](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#gcloud-command)
+    * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataproc_cluster#service_account)
 * Notebooks
-  * [Console](https://cloud.google.com/vertex-ai/docs/workbench/user-managed/create-new#console) - see step 8
-  * [gcloud](https://cloud.google.com/sdk/gcloud/reference/notebooks/instances/create#--service-account)
-  * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/notebooks_instance#service_account)
+    * [Console](https://cloud.google.com/vertex-ai/docs/workbench/user-managed/create-new#console) - see step 8
+    * [gcloud](https://cloud.google.com/sdk/gcloud/reference/notebooks/instances/create#--service-account)
+    * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/notebooks_instance#service_account)
 * [Workflows](https://cloud.google.com/workflows/docs/authentication#deploy_a_workflow_with_a_custom_service_account)
-  *  [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/workflows_workflow#service_account)
+    * [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/workflows_workflow#service_account)
 * [Vertex AI](https://cloud.google.com/vertex-ai/docs/general/custom-service-account#attach)
-  * Vertex AI's Console UI does not always expose the field necessary to specify a user managed SA.  
-However, most such screens have a "View Code <>" button in the top right.
-The generated code is populated with the fields you entered in the UI.
-Using the curl option. you can add the missing attribute in a text editor 
-(typically `"serviceAccount": "workload@hack-team-eletech.iam.gserviceaccount.com"`, to be added as a peer of the `"name": "..."` or `"displayName" : "..."` attribute) 
-and execute the resulting command in Cloud Shell.
+    * Vertex AI's Console UI does not always expose the field necessary to specify a user managed SA.  
+      However, most such screens have a "View Code <>" button in the top right.
+      The generated code is populated with the fields you entered in the UI.
+      Using the curl option. you can add the missing attribute in a text editor
+      (typically `"serviceAccount": "workload@hack-team-eletech.iam.gserviceaccount.com"`, to be added as a peer of the `"name": "..."`
+      or `"displayName" : "..."` attribute)
+      and execute the resulting command in Cloud Shell.
 
 Here's an example for tuning a language model:
+
 ```shell
 PROJECT_ID="hack-team-eletech"
 
@@ -317,53 +322,63 @@ $'{
 ```
 
 ### Limitations & Restrictions
+
 * You have a budget of EUR ~150.
-Your team lead will receive notifications when your actual or forecast spend passes 25%, 50%, 75%, 90% and 100%. If you are the team lead please cascade this information to your fellow team members.
-Your project will be torn down if you approach 100% or if you are spending rapidly. 
+  Your team lead will receive notifications when your actual or forecast spend passes 25%, 50%, 75%, 90% and 100%. If
+  you are the team lead please cascade this information to your fellow team members.
+  Your project will be torn down if you approach 100% or if you are spending rapidly.
 * Fairly severe quotas are in place to help manage the above.
-Talk to the happy hackathon helpers if this is impeding your idea.
+  Talk to the happy hackathon helpers if this is impeding your idea.
 * You cannot create services accounts.
-  * Use your infrastructure SA to interact with GCP from GitHub.
-  * Use your workload SA to power your workloads.
+    * Use your infrastructure SA to interact with GCP from GitHub.
+    * Use your workload SA to power your workloads.
 * You cannot create or upload service account keys.
-  * Use your own interactive access or Workload Identity Federation from GitHub Actions workflows instead.
+    * Use your own interactive access or Workload Identity Federation from GitHub Actions workflows instead.
 
 ### Developing in Google Cloud Console & Cloud Shell
-Built into the Google Cloud Console is a Shell & Editor. Google Cloud Shell is already provisioned with a lot of the standard development tools including:
+
+Built into the Google Cloud Console is a Shell & Editor. Google Cloud Shell is already provisioned with a lot of the
+standard development tools including:
+
 - Git
 - Kubeclt
-- Docker 
-- Helm 
+- Docker
+- Helm
 - Terraform
-- gcloud cli 
+- gcloud cli
 - & more.
 
 To access cloud shell simply Click the Cloud Shell Icon in the top right hand corner of your Cloud Console Window.
 </br>
 <img src="https://storage.googleapis.com/db-hack23-readme-assets/readme-001-activate-cloud-shell.png"
-     alt="Activate Cloud Shell"
-     style="max-height: 230px; float:center" />
+alt="Activate Cloud Shell"
+style="max-height: 230px; float:center" />
 </br></br>
-Cloud Shell will activate at the bottom of your Cloud Console window. You can also access the inbuilt IDE for code development and Git access ect by clicking the ```Open Eiditor``` button from within Cloud Shell.
+Cloud Shell will activate at the bottom of your Cloud Console window. You can also access the inbuilt IDE for code
+development and Git access ect by clicking the ```Open Eiditor``` button from within Cloud Shell.
 </br>
 <img src="https://storage.googleapis.com/db-hack23-readme-assets/readme-002-cloud-shell.png"
-     alt="Activate Cloud Shell amd IDE"
-     style="max-height: 230px; float:center" />
+alt="Activate Cloud Shell amd IDE"
+style="max-height: 230px; float:center" />
 
-From here you could easily clone your team's GitHub repositories and start iterating on your hackathon solution. 
+From here you could easily clone your team's GitHub repositories and start iterating on your hackathon solution.
 
 **Setting up Cloud Shell for Development**
-Simply run the following commands to Auth your cloud shell against your Google Cloud Account. 
+Simply run the following commands to Auth your cloud shell against your Google Cloud Account.
 
-1. Simply run ```gcloud auth login``` and follow the prompts to complete Oauth2 Auth from Cloud Shell to your Cloud Project.
+1. Simply run ```gcloud auth login``` and follow the prompts to complete Oauth2 Auth from Cloud Shell to your Cloud
+   Project.
 2. Configure your default Cloud Shell Google Cloud Project by running ```gcloud config set project hack-team-eletech```
 
 ---
 </br>
 
 ### [GCP Example Apps](https://github.com/db-hackathon/support/tree/main/google-examples)
+
 #### DBHack Chatbot
-This is a sample applicaiton that has been developer by Google PSO (Hans-Christian Fuchs) for use in the DB Hackathon 2024. 
+
+This is a sample applicaiton that has been developer by Google PSO (Hans-Christian Fuchs) for use in the DB Hackathon
+2024.
 It Gives you a sample Chat Bot applicaton written in Python using Streemlit.
 It harnesses Gemini and RAG and can be tailored to your needs during the hackathon.
 The example code is available [here](https://github.com/db-hackathon/support/tree/main/google-examples).
@@ -372,11 +387,13 @@ The example code is available [here](https://github.com/db-hackathon/support/tre
 </br>
 
 ## [GitHub](https://github.com/db-hackathon/eletech)
+
 This repository is at your disposal.
 All team members have "maintainer" access.
 No branch protection rules are enforced.
 
-A set of useful [GitHub Actions variables](https://docs.github.com/en/actions/learn-github-actions/variables) have been populated for you:
+A set of useful [GitHub Actions variables](https://docs.github.com/en/actions/learn-github-actions/variables) have been
+populated for you:
 * vars.INFRA_SA_EMAIL - The email address representation of the SA you can use to deploy infrastructure. It has the same access rights as human team members.: infrastructure@hack-team-eletech.iam.gserviceaccount.com
 * vars.INFRA_SA_ID - The fully qualified ID representation of the SA you can use to deploy infrastructure.: projects/hack-team-eletech/serviceAccounts/infrastructure@hack-team-eletech.iam.gserviceaccount.com
 * vars.PROJECT_ID - Your team's GCP Project ID.: hack-team-eletech
@@ -386,25 +403,29 @@ A set of useful [GitHub Actions variables](https://docs.github.com/en/actions/le
 * vars.WORKLOAD_SA_ID - The fully qualified ID representation of the SA you can attach to your workloads (e.g. to a Cloud Run service). : projects/hack-team-eletech/serviceAccounts/workload@hack-team-eletech.iam.gserviceaccount.com
 
 ### Limitations & Restrictions
+
 * The hackathon platform owns the files that were seeded into this repo.
-If you modify them, your changes may be overwritten.
+  If you modify them, your changes may be overwritten.
 * We have a hard limit of 50,000 GitHub Actions minutes for the whole hackathon.
-We request heavy user consider offloading what they can to Cloud Build instead
+  We request heavy user consider offloading what they can to Cloud Build instead
 * We have a hard limit of 50GB of GitHub Actions and Packages storage for the whole hackathon.
-  * If you produce very large GitHub Actions logs, please clean them up in a timely manner.
-  * If you want to publish container images, please use GCP Artifact Registry.
-  * For other artefacts, consider using Cloud Storage.
+    * If you produce very large GitHub Actions logs, please clean them up in a timely manner.
+    * If you want to publish container images, please use GCP Artifact Registry.
+    * For other artefacts, consider using Cloud Storage.
 
 ## [Terraform Cloud](https://app.terraform.io/app/db-hackathon-2024/workspaces/hack-team-eletech)
+
 Your Terraform Cloud workspace is VCS-backed by this GitHub repository.
-Pushing files to the "terraform" directory of this repo will automatically trigger a plan/apply cycle in TFC 
+Pushing files to the "terraform" directory of this repo will automatically trigger a plan/apply cycle in TFC
 using the contents of that directory as the root module.
 
-The workspace has been pre-configured so that the google and google-beta providers will authenticate using your infrastructure SA 
+The workspace has been pre-configured so that the google and google-beta providers will authenticate using your
+infrastructure SA
 and default to creating resources in your project.
-There's a [simple example](./terraform/main.tf) to start you off. 
+There's a [simple example](./terraform/main.tf) to start you off.
 
-A set of useful [Input variables](https://developer.hashicorp.com/terraform/language/values/variables) have been populated for you:
+A set of useful [Input variables](https://developer.hashicorp.com/terraform/language/values/variables) have been
+populated for you:
 * infra_sa_email - The email address representation of the SA you can use to deploy infrastructure. It has the same access rights as human team members.: infrastructure@hack-team-eletech.iam.gserviceaccount.com
 * infra_sa_id - The fully qualified ID representation of the SA you can use to deploy infrastructure.: projects/hack-team-eletech/serviceAccounts/infrastructure@hack-team-eletech.iam.gserviceaccount.com
 * project_id - Your team's GCP Project ID.: hack-team-eletech
@@ -417,11 +438,14 @@ A set of useful [Input variables](https://developer.hashicorp.com/terraform/lang
 
 ### Interactive Access
 
-Two OpenShift environments are available for the hackathon event. The primary cluster is [here](https://console-openshift-console.apps.dbh.db-hackathon.org).
+Two OpenShift environments are available for the hackathon event. The primary cluster
+is [here](https://console-openshift-console.apps.dbh.db-hackathon.org).
 No SSL cert has been provisioned, so you'll have to risk the warnings.
-On that page, choose to "Log in with" the "githubidp" option and use the GitHub handle you signed up with to complete the authentication.
+On that page, choose to "Log in with" the "githubidp" option and use the GitHub handle you signed up with to complete
+the authentication.
 
-Once logged in, you will have access to two namespaces; one personal named after your GitHub handle, and one shared named after your team.
+Once logged in, you will have access to two namespaces; one personal named after your GitHub handle, and one shared
+named after your team.
 
 The team namespace has a special Kubernetes secret named "gcp-access".
 The value of this secret is an automatically-refresh OAuth 2.0 token for your workload SA.
@@ -430,36 +454,51 @@ Each token expires after one hour, but the value of the secret is automatically 
 Your application should tolerate having to refresh the token from the Kubernetes secret.
 When it detects an expired token, simply access the Kubernetes secret again to get a fresh one.
 
-A secondary cluster is available [here](https://console-openshift-console.apps.hackathon.uksouth.aroapp.io) and if it is required to use this one too you will be directed to it.
+A secondary cluster is available [here](https://console-openshift-console.apps.hackathon.uksouth.aroapp.io) and if it is
+required to use this one too you will be directed to it.
 
 ## Azure
-Log in using your SSO ID. Each team has a Resource Group in which they have broad administrative access.
-Training materials are available [here](https://dbaihackathon2024outlook.sharepoint.com/sites/HakathonTraining/SitePages/TrainingHome.aspx).
 
+Log in using your SSO ID. Each team has a Resource Group in which they have broad administrative access.
+Training materials are
+available [here](https://dbaihackathon2024outlook.sharepoint.com/sites/HakathonTraining/SitePages/TrainingHome.aspx).
+
+## [MS Teams](https://teams.microsoft.com/v2/)
+
+Log in using your SSO ID. There is
+a [global support team](https://teams.microsoft.com/l/team/19%3AanjLDL718QMHaZCH0sDgW6dz-Cl8Kcgb8EJvNVVqvo41%40thread.tacv2/conversations?groupId=7c337606-8e36-414f-946e-09ac1161aca5&tenantId=a8f249fb-91ee-4dd5-bf60-d1ec1330b078)
+and a dedicated Team for each participant team.
 
 ## Hackathon Use Cases
 
-These are detailed in the [briefing pack](https://storage.cloud.google.com/hackathon_shared_storage/TeamLeadBriefingDeck.pdf), but to summarise here:
+These are detailed in
+the [briefing pack](https://storage.cloud.google.com/hackathon_shared_storage/TeamLeadBriefingDeck.pdf), but to
+summarise here:
 
 * How can we support children and young people who have family members affected by
-dementia?
+  dementia?
 * How can we improve support to families after a dementia diagnosis?
 * How can we create a virtual nurse service for carers taking care of loved ones living with
-dementia?
+  dementia?
 * How can we improve our reach to carers within the LGBTQ+ communities to access support from
-Dementia UK?
+  Dementia UK?
 * How can we reach more male carers affected by dementia?
 * How can we make Dementia UK content easily accessible?
 
-
 ## Hackathon Datasets
+
 Dementia UK data is provided for you to use to ground your application with relevant guidance.
 
-Dementia UK's website provides informational web pages and related PDF leaflets. The PDF leaflets are available [here](https://storage.cloud.google.com/hackathon_shared_storage/dementia_uk_data/pdfs).
+Dementia UK's website provides informational web pages and related PDF leaflets. The PDF leaflets are
+available [here](https://storage.cloud.google.com/hackathon_shared_storage/dementia_uk_data/pdfs).
 
-A spreadsheet of useful additional information is available [here](https://storage.cloud.google.com/hackathon_shared_storage/dementia_uk_data/useful_data.xlsx).  This contains the mapping of PDFs to URLs, google search volumes relating to dementia and information for specific use cases.), 
+A spreadsheet of useful additional information is
+available [here](https://storage.cloud.google.com/hackathon_shared_storage/dementia_uk_data/useful_data.xlsx). This
+contains the mapping of PDFs to URLs, google search volumes relating to dementia and information for specific use
+cases.),
 
 ## Code and Setup Tutorials
+
 ### Google
 
 * [Google Cloud Generative AI Training Resources](https://cloud.google.com/blog/topics/training-certifications/new-google-cloud-generative-ai-training-resources)
@@ -476,21 +515,29 @@ A spreadsheet of useful additional information is available [here](https://stora
 ### GitHub
 
 * [GitHub Copilot documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot)
-* [How to install and the features of GitHub Copilot that are more relevant to the end users](https://docs.github.com/en/enterprise-cloud@latest/copilot/setting-up-github-copilot/setting-up-github-copilot-for-yourself) (ignoring the first step as you will be providing them from the enterprise/organization): 
-* [Installing the extensions into your supported IDEs](https://docs.github.com/en/enterprise-cloud@latest/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment) note there are a number of tabs on this page that you can select for the dedicated supported IDE which are Azure Data Studio, JeBrains IDEs, Vim/Neovim, Visual Studio and Visual Studio Code
+* [How to install and the features of GitHub Copilot that are more relevant to the end users](https://docs.github.com/en/enterprise-cloud@latest/copilot/setting-up-github-copilot/setting-up-github-copilot-for-yourself) (
+  ignoring the first step as you will be providing them from the enterprise/organization):
+* [Installing the extensions into your supported IDEs](https://docs.github.com/en/enterprise-cloud@latest/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment)
+  note there are a number of tabs on this page that you can select for the dedicated supported IDE which are Azure Data
+  Studio, JeBrains IDEs, Vim/Neovim, Visual Studio and Visual Studio Code
 * [Links to what features GitHub Copilot gives you and how to use it](https://docs.github.com/en/enterprise-cloud@latest/copilot/using-github-copilot)
 * [Video on getting started with GitHub Copilot](https://www.youtube.com/watch?v=dhfTaSGYQ4o)
 
-## Additional useful guides 
+## Additional useful guides
 
 1. [Hackathon Briefing Pack](https://storage.cloud.google.com/hackathon_shared_storage/TeamLeadBriefingDeck.pdf)
-2. [Top tips designing for cognitive accessibility](https://storage.cloud.google.com/hackathon_shared_storage/Top_tips_cognitive_accessibility.pdf) and [video](https://youtu.be/yHTTG5Yh4bc?si=hIrjmR96uc1fPihH)
+2. [Top tips designing for cognitive accessibility](https://storage.cloud.google.com/hackathon_shared_storage/Top_tips_cognitive_accessibility.pdf)
+   and [video](https://youtu.be/yHTTG5Yh4bc?si=hIrjmR96uc1fPihH)
 
 ## Teams Support Channels
 
-Each participant should have been automatically enabled for the Hackathon Teams platform. You can use your client of choice (i.e. browser, Windows, Android, or IOS endpoint) and to login use your Hackathon login <your_user_id>@db-hackathon.com.
+Each participant should have been automatically enabled for the Hackathon Teams platform. You can use your client of
+choice (i.e. browser, Windows, Android, or IOS endpoint) and to login use your Hackathon login <your_user_id>
+@db-hackathon.com.
 You can use all the Teams functionalities including chat, group chat, voice/video and meetings.
-To support you during the event the Team "DB Global Hackathon Support" was created and within this team there are various channels:
+To support you during the event the Team "DB Global Hackathon Support" was created and within this team there are
+various channels:
+
 1. General: Use this for any general question about the event.
 2. GitHub Support: Use this channel for any question related to GitHub.
 3. Google Support: Use this channel for any question or issue with the Google platform.
@@ -498,39 +545,51 @@ To support you during the event the Team "DB Global Hackathon Support" was creat
 5. HashiCorp Support: Use this channel for any question or issue with the HashiCorp platform.
 6. RedHat Support: Use this channel for any question or issue with the RedHat (OpenShift) platform.
 
-The Team "DB Global Hackathon Support" is public, you can discover this team by using the Browse Teams  
-
+The Team "DB Global Hackathon Support" is public, you can discover this team by using the Browse Teams
 
 ## FAQ
+
 ### Authenticating with GCP APIs from code
-I've seen quite a few requests for assistance where colleagues feel they need an API key or SA key in order to auth with GCP APIs from their code. In general, you don't need this invoke our supported services. When running locally, gcloud login will suffice:
+
+I've seen quite a few requests for assistance where colleagues feel they need an API key or SA key in order to auth with
+GCP APIs from their code. In general, you don't need this invoke our supported services. When running locally, gcloud
+login will suffice:
 
 ```bash
 gcloud auth login <<you@db-hackathon.com>>
 gcloud auth application-default login
 ```
 
-When running on GCP-native compute using Google's client libraries or gcloud, as long as you've attached your Workload SA to the compute, the magic of [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials) will kick in and the code will auth correctly.
-When not using Google's client libraries, you can obtain an access token from the [metadata server](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#applications).
+When running on GCP-native compute using Google's client libraries or gcloud, as long as you've attached your Workload
+SA to the compute, the magic
+of [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials) will
+kick in and the code will auth correctly.
+When not using Google's client libraries, you can obtain an access token from
+the [metadata server](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#applications).
 You can pass this to the client libraries/gcloud/curl e.g.
+
 ```bash
 curl -X POST \
 -H "Authorization: Bearer $ACCESS_TOKEN" \
 ...
 ```
 
-When running on OCP, the value of the secret "gcp-access" in your team's namespace will have a valid access token for your Workload SA.
+When running on OCP, the value of the secret "gcp-access" in your team's namespace will have a valid access token for
+your Workload SA.
 
 ### How do I deploy Cloud Run?
-You can find a [GitHub Actions example here](./.github/workflows/example_deploy_cloud_run_action.yml) 
+
+You can find a [GitHub Actions example here](./.github/workflows/example_deploy_cloud_run_action.yml)
 and a [Terraform example here](./terraform/example_cloud_run.tf).
 
 ### How do I deploy App Engine?
+
 You can find a [GitHub Actions example here](./.github/workflows/example_deploy_app_engine_action.yml),
-a [gcloud example here](./.github/workflows/example_deploy_app_engine_gcloud.yml) 
+a [gcloud example here](./.github/workflows/example_deploy_app_engine_gcloud.yml)
 and a [Terraform example here](./terraform/example_app_engine.tf).
 
 ### How do I deploy Cloud Functions?
-You can find a [GitHub Actions example here](./.github/workflows/example_deploy_cloud_function_action.yml), 
-a [gcloud example here](./.github/workflows/example_deploy_cloud_function_gcloud.yml) 
+
+You can find a [GitHub Actions example here](./.github/workflows/example_deploy_cloud_function_action.yml),
+a [gcloud example here](./.github/workflows/example_deploy_cloud_function_gcloud.yml)
 and a [Terraform example here](./terraform/example_cloud_functions.tf).
