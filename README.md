@@ -1,5 +1,5 @@
 # Welcome, eletech, to the 2024 TDI Global Hackathon
-
+## communication link (https://discord.gg/9gwvMpjQ)
 ## Contents
 
 1. [About your hackathon environment](#about-your-hackathon-environment)
