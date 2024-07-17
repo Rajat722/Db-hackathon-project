@@ -3,24 +3,25 @@
 ## Contents
 
 1. [About your hackathon environment](#about-your-hackathon-environment)
-2. [Access Issues](#access-issues)
-3. [GCP](#gcp)
+2. [Hackathon ID](#hackathon-id)
+3. [Access Issues](#access-issues)
+4. [GCP](#gcp)
     1. [First log-in](#first-log-in)
     2. [Access Rights & Principals](#access-rights--principals)
     3. [Use a custom/user-managed Service Account wherever possible](#use-a-customuser-managed-service-account-wherever-possible)
     4. [Limitations & Restrictions](#limitations--restrictions)
     5. [Developing in Google Cloud Console & Cloud Shell](#developing-in-google-cloud-console--cloud-shell)
     6. [GCP Example Apps](#gcp-example-apps)
-4. [GitHub](#github)
+5. [GitHub](#github)
     1. [Limitations & Restrictions](#limitations--restrictions-1)
-5. [Terraform Cloud](#terraform-cloud)
-6. [OpenShift](#openshift)
-7. [Azure](#azure)
-8. [Hackathon Use Cases](#hackathon-use-cases)
-8. [Hackathon DataSets](#hackathon-datasets)
-9. [Code and Setup Tutorials](#code-and-setup-tutorials)
-10. [Additional useful guides](#additional-useful-guides-)
-11. [FAQ](#faq)
+6. [Terraform Cloud](#terraform-cloud)
+7. [OpenShift](#openshift)
+8. [Azure](#azure)
+9. [Hackathon Use Cases](#hackathon-use-cases)
+10. [Hackathon DataSets](#hackathon-datasets)
+11. [Code and Setup Tutorials](#code-and-setup-tutorials)
+12. [Additional useful guides](#additional-useful-guides-)
+13. [FAQ](#faq)
     1. [Authenticating with GCP APIs from code](#authenticating-with-gcp-apis-from-code)
     2. [How do I deploy Cloud Run?](#how-do-i-deploy-cloud-run)
     3. [How do I deploy App Engine?](#how-do-i-deploy-app-engine)
@@ -46,6 +47,11 @@ Using the GitHub repository and the Terraform Cloud workspace are entirely optio
 > **Note**
 > This README content may be changed or overwritten by the hackathon organisers during the event. If you intend to
 > create documentation please house it in a separate file.
+
+## Hackathon ID
+To derive your hackathon user ID, take the personal email address you signed up with, substitute the "@" with "." and append "@db-hackathon.com". 
+
+E.g. foo.bar@gmail.com becomes foo.bar.gmail.com@db-hackathon.com
 
 ## Access Issues
 
@@ -388,6 +394,15 @@ The example code is available [here](https://github.com/db-hackathon/support/tre
 
 ## [GitHub](https://github.com/db-hackathon/eletech)
 
+### Initial Login
+Only participants who registered with a Github handle will be invited to the organisation, also anyone who registered with an invalid Github handle will have been rejected and no account created.
+
+Participants shoudl recieve an email with a link to accept the invitation to their project, please check you spam if you are missing the email.
+
+When prompted, login using the Github handle you registered with.  When prompted for SSO authentication, use your hackathon ID.  You should then be prompted to accept the invitation to the 'db-hackathon' organisation (some users report needing to reopen the link to see the invite once signed in).
+
+### Usage
+
 This repository is at your disposal.
 All team members have "maintainer" access.
 No branch protection rules are enforced.
@@ -414,6 +429,15 @@ populated for you:
     * For other artefacts, consider using Cloud Storage.
 
 ## [Terraform Cloud](https://app.terraform.io/app/db-hackathon-2024/workspaces/hack-team-eletech)
+
+### Initial Login
+Please login using [sso sign in](https://app.terraform.io/sso/sign-in).  You do not need to wait for an invitation email to attempt this.
+
+Use the organisation name *db-hackathon-2024* 
+
+If you do not already have a HCP Terraform account associated with the email you used to register for this event, you will be prompted to create an account and link it to your Hackathon ID. Alternatively if you do, follow the option to *link to existing HCP Terraform Account* or login with Github account if this uses the same email account.
+
+### Usage
 
 Your Terraform Cloud workspace is VCS-backed by this GitHub repository.
 Pushing files to the "terraform" directory of this repo will automatically trigger a plan/apply cycle in TFC
