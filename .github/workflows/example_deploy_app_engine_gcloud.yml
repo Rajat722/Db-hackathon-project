@@ -28,10 +28,6 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v1'
 
-      # Only needed for first run
-      - name: 'Create App Environment'
-        run: 'gcloud app create --region=europe-west3'
-
       - name: 'Deploy App Engine'
         id: deploy
         run: |
