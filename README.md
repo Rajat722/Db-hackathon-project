@@ -417,6 +417,10 @@ populated for you:
 * vars.WORKLOAD_SA_EMAIL - The email address representation of the SA you can attach to your workloads (e.g. to a Cloud Run service). : workload@hack-team-eletech.iam.gserviceaccount.com
 * vars.WORKLOAD_SA_ID - The fully qualified ID representation of the SA you can attach to your workloads (e.g. to a Cloud Run service). : projects/hack-team-eletech/serviceAccounts/workload@hack-team-eletech.iam.gserviceaccount.com
 
+### Github Copilot
+
+All Github users have access to Github Copilot, for more details look [here](#github-documentation)
+
 ### Limitations & Restrictions
 
 * The hackathon platform owns the files that were seeded into this repo.
@@ -536,7 +540,7 @@ cases.),
 * [Microsoft AI Builder](https://learn.microsoft.com/en-us/ai-builder/overview)
 * [Get started using GPT-35-Turbo and GPT-4 with Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-studio)
 
-### GitHub
+### GitHub Documentation
 
 * [GitHub Copilot documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot)
 * [How to install and the features of GitHub Copilot that are more relevant to the end users](https://docs.github.com/en/enterprise-cloud@latest/copilot/setting-up-github-copilot/setting-up-github-copilot-for-yourself) (
