@@ -7,7 +7,8 @@
     2. [Access Rights & Principals](#access-rights--principals)
     3. [Use a custom/user-managed Service Account wherever possible](#use-a-customuser-managed-service-account-wherever-possible)
     4. [Limitations & Restrictions](#limitations--restrictions)
-    5. [Developing in Google Cloud Console & Cloud Shell](#developing-in-google-cloud-console--cloud-shell) 
+    5. [Developing in Google Cloud Console & Cloud Shell](#developing-in-google-cloud-console--cloud-shell)
+    6. [GCP Example Apps](#gcp-example-apps)
 4. [GitHub](#github)
     1. [Limitations & Restrictions](#limitations--restrictions-1) 
 5. [Terraform Cloud](#terraform-cloud)
@@ -356,6 +357,16 @@ Simply run the following commands to Auth your cloud shell against your Google C
 
 1. Simply run ```gcloud auth login``` and follow the prompts to complete Oauth2 Auth from Cloud Shell to your Cloud Project.
 2. Configure your default Cloud Shell Google Cloud Project by running ```gcloud config set project hack-team-eletech```
+
+---
+</br>
+
+### [GCP Example Apps](https://github.com/db-hackathon/support/tree/main/google-examples)
+#### DBHack Chatbot
+This is a sample applicaiton that has been developer by Google PSO (Hans-Christian Fuchs) for use in the DB Hackathon 2024. 
+It Gives you a sample Chat Bot applicaton written in Python using Streemlit.
+It harnesses Gemini and RAG and can be tailored to your needs during the hackathon.
+The example code is available [here](https://github.com/db-hackathon/support/tree/main/google-examples).
 
 ---
 </br>
