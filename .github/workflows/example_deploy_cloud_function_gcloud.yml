@@ -34,10 +34,12 @@ jobs:
           FUNCTION_NAME: 'python-http-function'
           REGION: 'europe-west3'
           WORKLOAD_SA_EMAIL: ${{ vars.WORKLOAD_SA_EMAIL }} # Why not use this direct in the script? See https://docs.github.com/en/enterprise-cloud@latest/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
+          WORKLOAD_SA_ID: ${{ vars.WORKLOAD_SA_ID }}
         run: |
           set -e
           
           gcloud functions deploy "${FUNCTION_NAME}" \
+          --build-service-account="${WORKLOAD_SA_ID}" \
           --entry-point="hello_get" \
           --gen2 \
           --region="${REGION}" \
