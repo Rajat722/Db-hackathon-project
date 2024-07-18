@@ -31,7 +31,7 @@ jobs:
 
       # Only needed for first run
       - name: 'Create App Environment'
-        run: 'gcloud app create --region=europe-west3'
+        run: 'gcloud app create --region=europe-west3 --service-account="${{ vars.WORKLOAD_SA_EMAIL }}'
 
       - name: 'Deploy App Engine'
         id: 'deploy'
