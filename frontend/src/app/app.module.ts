@@ -14,6 +14,8 @@ import { MarkerService } from './service/marker.service';
 import { ShapeService } from './service/shape.service';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
+import { DataAlertPipe } from './pipes/data-alert.pipe';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import { AlertsComponent } from './components/alerts/alerts.component';
     HomeComponent,
     LocationComponent,
     SidebarComponent,
-    AlertsComponent
+    AlertsComponent,
+    DataAlertPipe,
+    MapComponent,
+
   ],
   imports: [
     BrowserModule,

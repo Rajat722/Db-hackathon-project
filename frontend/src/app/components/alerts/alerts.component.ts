@@ -12,7 +12,6 @@ export class AlertsComponent {
 
 }
 ngOnInit():void {
-  console.log("works")
     this.apiService.getAlerts().subscribe(
       response => {
         this.data = response;

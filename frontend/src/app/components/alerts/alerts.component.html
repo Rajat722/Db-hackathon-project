@@ -1,5 +1,6 @@
 <div class="table-container">
   <div class="container">
+    <h3>Alerts</h3>
     <div id="resultsTable" class="table-responsive">
       <table class="table">
         <thead class="thead-dark">
@@ -8,23 +9,19 @@
             <th scope="col">Name</th>
             <th scope="col">Location</th>
             <th scope="col">Type</th>
-            <th scope="col">Alert</th>
-            <th scope="col">Out of Area</th>
           </tr>
         </thead>
         <tbody>
           @for (datapoint of data; track data.individual; let i = $index) {
           <tr>
             <td>
-              {{ datapoint.timestamp }}
+              {{ datapoint.formattedDateField }}
             </td>
             <td>
               {{ datapoint.individual }}
             </td>
             <td>{{ datapoint.location }}</td>
-            <td>{{ datapoint.type }}</td>
-            <td>{{ datapoint.alert }}</td>
-            <td>{{ datapoint.out_of_area }}</td>
+            <td>{{ datapoint.type | alertType }}</td>
           </tr>
           }
         </tbody>
