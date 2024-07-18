@@ -1,3 +1,5 @@
-<div class="container">
-  <app-layout></app-layout>
-</div>
+<app-sidebar
+  [isExpanded]="sidebarExpanded"
+  (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+></app-sidebar>
+<router-outlet></router-outlet>

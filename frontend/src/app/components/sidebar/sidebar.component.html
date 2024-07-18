@@ -1,0 +1,37 @@
+<div class="sidebar" [ngClass]="{ expanded: isExpanded }">
+  <div class="header">
+    <h1 class="title">Eletech</h1>
+    <div class="toggle" (click)="handleSidebarToggle()">
+      <span class="chevron"></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="link">
+      <div class="content" [routerLink]="['/']" [routerLinkActive]="'active'">
+        <div class="icon"></div>
+        <div class="title">Home</div>
+      </div>
+    </div>
+    <div class="link">
+      <div
+        class="content"
+        [routerLink]="['/alerts']"
+        [routerLinkActive]="'active'"
+      >
+        <div class="icon"></div>
+        <div class="title">Alerts</div>
+      </div>
+    </div>
+    <div class="link with-children">
+      <div
+        class="content"
+        [routerLink]="['/map']"
+        [routerLinkActive]="'active'"
+      >
+        <div class="icon"></div>
+        <div class="title">Map</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>

@@ -3,26 +3,38 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { TableComponent } from './components/table/table.component';
+import { GetDataService } from './service/get-data.service';
+import { HttpClientModule } from '@angular/common/http';
+
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { LocationComponent } from './components/location/location.component';
+import { MarkerService } from './service/marker.service';
+import { ShapeService } from './service/shape.service';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    TableComponent,
-
+    HomeComponent,
+    LocationComponent,
+    SidebarComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NavBarComponent
+    HttpClientModule
 ],
-exports:[TableComponent],
-  providers: [],
+exports:[],
+  providers: [
+    GetDataService,
+    MarkerService,
+    ShapeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
