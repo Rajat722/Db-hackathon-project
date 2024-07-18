@@ -26,6 +26,7 @@ resource "google_cloudfunctions2_function" "gen2" {
         object = "cloud-functions-example.zip"
       }
     }
+    service_account = var.workload_sa_id
   }
 
   service_config {
