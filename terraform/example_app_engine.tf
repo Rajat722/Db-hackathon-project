@@ -1,6 +1,6 @@
 #resource "google_app_engine_application" "example_tfc_app" {
 #  project     = var.project_id
-#  location_id = "europe-west3"
+#  location_id = "europe-west1"
 #}
 #
 #resource "google_app_engine_standard_app_version" "example_tfc_app_version" {
