@@ -13,10 +13,10 @@ jobs:
     steps:
       # actions/checkout MUST come before auth
       - name: 'Checkout'
-        uses: 'actions/checkout@v3'
+        uses: 'actions/checkout@v4'
 
       - name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
+        uses: 'google-github-actions/auth@v2'
         with:
           export_environment_variables: true
           project_id : ${{ vars.PROJECT_ID }}
@@ -24,7 +24,7 @@ jobs:
           service_account: ${{ vars.INFRA_SA_EMAIL }}
 
       - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
+        uses: 'google-github-actions/setup-gcloud@v2'
 
       - name: 'Create storage bucket'
-        run: 'gcloud storage buckets create "gs://${{ vars.PROJECT_ID }}_github_bucket" --location=EU --uniform-bucket-level-access --public-access-prevention'
+        run: 'gcloud storage buckets create "gs://${{ vars.PROJECT_ID }}_github_bucket" --location=europe-west1 --uniform-bucket-level-access --public-access-prevention'
