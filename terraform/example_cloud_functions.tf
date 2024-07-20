@@ -1,7 +1,7 @@
 resource "google_cloudfunctions_function" "gen1" {
   entry_point           = "hello_get"
   name                  = "tfc-gen1-cloud-function"
-  region                = "europe-west3"
+  region                = "europe-west1"
   runtime               = "python311"
   service_account_email = var.workload_sa_email
   source_archive_bucket = "hackathon_shared_storage"
@@ -15,7 +15,7 @@ output "gen1_function_uri" {
 
 resource "google_cloudfunctions2_function" "gen2" {
   name     = "tfc-gen2-cloud-function"
-  location = "europe-west3"
+  location = "europe-west1"
 
   build_config {
     runtime     = "python311"
