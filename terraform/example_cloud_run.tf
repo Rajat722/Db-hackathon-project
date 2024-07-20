@@ -1,6 +1,6 @@
 #resource "google_cloud_run_v2_service" "tfc_cloud_run_service" {
 #  name     = "tfc-cloud-run-service"
-#  location = "europe-west3"
+#  location = "europe-west1"
 #
 #  template {
 #    containers {
