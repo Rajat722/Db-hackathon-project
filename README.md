@@ -1,4 +1,4 @@
-# Welcome, eletech, to the 2024 Deutsche Bank Global Hackathon Winners
+# Welcome to eletech, the 2024 Deutsche Bank Global Hackathon Winners
 
 ## Contents:
     Our system equips caretakers with a hardware device that tracks a patient's location
